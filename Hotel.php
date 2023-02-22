@@ -159,7 +159,26 @@ class Hotel
             . "</br> Nombre de chambres disponibles : " . $nbrChambreDispo; // ou bien mettre : (count ($this->getchambres()) - $this->chambresReservees())
     }
 
+    public function infoTableauhotel()
+    {    
+        echo "<span style='font-size:22px ; color:black'>Statut des chambres de <b> $this->nom </b> :</span><br><br>";
+        echo "<style type=text/css>",
+        '<thead>',
+            '<tr>',
+                '<th> CHAMBRE </th>', '<th> PRIX </th>', '<th> WIFI</th>', '<th> ETAT</th>',
+            '</tr>';
+        '<tbody>';
+        foreach ($this->chambres as  $chambre)
+            {
+                
+            "<td style=color:'grey'>.$chambre->getnom();</td>";
 
+            }
+       
+        
+    
+
+    }
     public function __toString()
     {
         return $this->nom . $this->ville;
