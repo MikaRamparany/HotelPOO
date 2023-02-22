@@ -5,14 +5,14 @@ Class Client {
     
     private string $nom;
     private string $prenom;
-    private array $reservation = [];
+    private array $reservations = [];
 
     public function __construct ( $nom, $prenom)
 
     {
         $this -> nom = $nom;
         $this -> prenom = $prenom;
-        $this -> reservation = [];
+        $this -> reservations = [];
     }
     
     //GETTERS and SETTERS
@@ -45,7 +45,7 @@ Class Client {
 
     public function addResa ($reservation)
     {
-    $this-> reservation[] = $reservation;
+    $this-> reservations[] = $reservation;
     }
    
 
@@ -53,7 +53,7 @@ Class Client {
     public function prixTotal()
     {
     $prixTotal=0;
-    foreach($this->reservation as $reservation) 
+    foreach($this->reservations as $reservation) 
         $prixTotal+=$reservation->getChambre()->getPrix();
         
     return $prixTotal;
@@ -66,7 +66,7 @@ Class Client {
     {
         
             $i = 0;
-            foreach ($this->reservation as $reservation) 
+            foreach ($this->reservations as $reservation) 
             {
                 $i++;
             }
@@ -77,20 +77,22 @@ Class Client {
     public function infoResaclient()
     { 
         echo "Réservation du client ".$this->getprenom() ." " .$this->getnom() . " <br> " .$this->nbResaclient() ." RESERVATION(S)" . "<br>";
-        if (0==count($this->reservation)) 
+        if (0==count($this->reservations)) 
         {
             echo "Aucune reservation ";
         } else 
         {
-        foreach ($this->reservation as $reservations) 
+        foreach ($this->reservations as $reservation) 
         {
-        echo $reservations->getChambre()->getHotel() .$reservations->getChambre(). $reservations->getChambre()->getnbLits().$reservations->getChambre()->getPrix()."€ - Wifi : ".$reservations->getChambre()->getWifi();
+            $hasWifi = ($reservation->getChambre()->getWifi() ) ? "oui" : "non"; // Ecriture ternaire, soit raccourcis pour if et else lorsque les instructions.
+
+        echo $reservation->getChambre()->getHotel() ." / " .$reservation->getChambre(). " / (".$reservation->getChambre()->getnbLits()." - " .$reservation->getChambre()->getPrix()."€ - Wifi : ".$hasWifi. ")  ".$reservation ."<br>";
      } 
     }
-    if (0<count($this->reservation))
+    if (0<count($this->reservations))
     {
-        echo "Total : ". $this->prixTotal()." € ";
+        echo " Total : ". $this->prixTotal()." €. ";
     } 
-
+     
 }
 }  

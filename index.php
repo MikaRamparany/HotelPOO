@@ -7,7 +7,7 @@ spl_autoload_register(function ($class_name)
 {
     require_once $class_name . '.php';
 });
-
+// HOTEL HILTON
 $Hilton = new Hotel ( "Hilton **** Strasbourg "," 10 Route de la Gare", "67000", "Strasbourg" );
 $C1Hilton=new Chambre($Hilton, "Chambre 1", "2 lits", 70,true);
 $C2Hilton=new Chambre($Hilton, "Chambre 2", "2 lits", 70,true);
@@ -23,7 +23,7 @@ $C10Hilton=new Chambre($Hilton, "Chambre 10", "3 lits", 220,true);
 
 
 
-
+//HOTE REGENT
 $Regent = new Hotel ("Regent *****Paris","23A Rue Jean-Frédéric Oberlin", "775000", "Paris");
 $RegentC1=new Chambre($Regent, "Chambre 1", "2 lits", 150,true);
 $RegentC2=new Chambre($Regent, "Chambre 2", "2 lits", 150,false);
@@ -36,21 +36,25 @@ $RegentC8=new Chambre($Regent, "Chambre 8", "3 lits", 310,false);
 $RegentC9=new Chambre($Regent, "Chambre 9", "3 lits", 330,false);
 $RegentC10=new Chambre($Regent, "Chambre 10", "3 lits", 400 ,true);
 
-
+//Clients
 
 $JohnDoe= new Client ("DOE", "John");
 $Jeanne= new Client ("DARC", "Jeanne");
-$mika= new Client ("MI", "Ka");
+$camille= new Client ("HON", "Camille");
 $green = new Client ("GREEN", "Shiloh");
 
-$ResaHilton1 = new Reservation($mika,$C8Hilton,"30-04-2023", "02-05-2023");
+$ResaHilton1 = new Reservation($camille,$C8Hilton,"30-04-2023", "02-05-2023");
 $ResaHilton2 = new Reservation($green,$C9Hilton,"30-05-2023", "03-06-2023");
 $ResaRegent1 = new Reservation($Jeanne,$RegentC7,"10-06-2023", "13-06-2023");
-$ResaRegent1 = new Reservation($mika,$RegentC7,"30-06-2023", "03-07-2023");
+$ResaRegent1 = new Reservation($camille,$RegentC7,"30-06-2023", "03-07-2023");
+
+// Tests affichages 
 
 
 echo"<br>";
-$Hilton -> afficherInfohotel(); 
+$Hilton -> afficherInfohotel();  // Affiche Nom, adresse, cp, N chambres de l'hotel, réservées; disponibles 
 echo"<br>";
 echo"<br>";
-$mika -> infoResaclient();
+$camille -> infoResaclient(); // Affiche Réservations du client
+
+$Hilton -> infoResahotel (); // Affiche réservation de l'hotel 

@@ -18,7 +18,7 @@ Class Hotel {
         $this-> ville= $ville;
         $this-> chambres = [];
         $this-> reservations =[];
-        //!rajouter un "$this-> addChambres ($this) qui sera créé après avoir fini de coder la classe Chambre.php  
+      
 
     }
 
@@ -95,11 +95,32 @@ $this-> chambres[] = $chambre;
 
 
     
-public function addReservations ($reservation)
-    {
-        $this->reservations[] = $reservation;
+public function addReservations ()
+   { $i = 0;
+foreach ($this->reservations as $reservation) 
+{
+    $i++;
+}
+return $i;
+   }
+public function infoResahotel ()
+    { 
+        echo " <br> <br> Réservations de l'hôtel " .$this  -> getnom() . " <br> " .count ($this-> getreservations()) ." RESERVATION(S)" ." <br>";
+
+        if (0==count($this->reservations)) 
+        {
+            echo "Aucune reservation ";
+        } else 
+        {
+        foreach ($this->reservations as $reservation) 
+            {
+                echo $reservation -> getreservations()-> getprenom () . " " . $reservation-> getreservations()-> getprenom () ." " .$reservation ->getChambre()-> getnumero ();
+            }
+      }
+
     }
 
+    
 
 
 
@@ -110,7 +131,7 @@ public function chambresDisponibles ()
         $chambresDisponibles =0;
         foreach ($this->chambres as  $chambre) {
             if ($chambre-> getStatut() == true) {
-                $chambresDisponibles++; // OU $chambresDisponibles = $chambresDisponivles + 1
+                $chambresDisponibles++; // OU $chambresDisponibles = $chambresDisponibles + 1
             }
         }
         return "Chambres disponibles : ".$chambresDisponibles;
@@ -137,13 +158,13 @@ public function afficherInfohotel ()
         .$this -> getcPostale()  . " "
         .$this-> getville ()."<br>"
         . "Nombre de chambres : ".count($this-> getchambres()) // ici "$this->getchambres() (le tableau) n'est pas accepté (message d'erreur). il faut alors une fonction pour pouvoir seulement afficher la taille du tableau et non le tableau en entier, soit : count($this-> getchambres()) OU sizeof()
-        . " <br> Nombre de chambres réservées :" ;
- //! Rajouter les infos sur chambres dispo et et chambres reservées après. 
+        . " <br> Nombre de chambres réservées : ". count ($this-> getreservations())
+        . "</br> Nombre de chambres disponibles : ";
 
-
-        
 
     }
+    
+
 public function __toString()
     {
     return $this-> nom . $this -> ville ; 

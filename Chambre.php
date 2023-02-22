@@ -120,6 +120,7 @@ public function setwifi (bool $wifi)
         }
     }
 
+
     public function __toString()
     {  
     return $this -> numero ;

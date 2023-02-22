@@ -5,7 +5,7 @@ Class Reservation
         private Client $Client;
         private $dateEntree;
         private $dateSortie;
-   
+
         private Chambre $chambre;
 
 
@@ -15,6 +15,7 @@ public function __construct ($client, $chambre, $dateEntree,$dateSortie)
         $this -> dateSortie= new Datetime($dateSortie); 
         $this -> Client = $client;
         $this -> chambre = $chambre;
+        
         $this->Client->addResa($this);
         $this->chambre->addReservation($this);
         $this -> chambre->setStatut(false);
@@ -61,6 +62,7 @@ public function setchambre ($chambre)
     return $this -> chambre = $chambre;
 
     }
+
 //FUNCTIONS********************************
 
 
