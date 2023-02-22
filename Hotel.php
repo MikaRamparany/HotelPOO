@@ -126,7 +126,7 @@ class Hotel
         foreach ($this->chambres as  $chambre) {
             if ($chambre->getStatut() == true) {
                 $chambresDisponibles++; // OU $chambresDisponibles = $chambresDisponibles + 1
-            }
+            }  
         }
         return "Chambres disponibles : " . $chambresDisponibles;
     }
@@ -139,7 +139,7 @@ class Hotel
                 $chambresReservees++;
             }
         }
-        return "Chambres réservées : " . $chambresReservees;
+        return  $chambresReservees;
     }
 
 
@@ -147,13 +147,16 @@ class Hotel
     public function afficherInfohotel()
 
     {
+
+        $nbrChambreDispo = count ($this->getchambres()) - $this->chambresReservees();
+
         echo "<br>   " . $this->getnom() . "</br>"
             . "Adresse : " . $this->getadresse() . " "
             . $this->getcPostale()  . " "
             . $this->getville() . "<br>"
-            . "Nombre de chambres : " . count($this->getchambres()) // ici "$this->getchambres() (le tableau) n'est pas accepté (message d'erreur). il faut alors une fonction pour pouvoir seulement afficher la taille du tableau et non le tableau en entier, soit : count($this-> getchambres()) OU sizeof()
-            . " <br> Nombre de chambres réservées : " . count($this->getreservations())
-            . "</br> Nombre de chambres disponibles : ";
+            . "Nombre de chambres : " . count ($this->getchambres()) // ici "$this->getchambres() (le tableau) n'est pas accepté (message d'erreur). il faut alors une fonction pour pouvoir seulement afficher la taille du tableau et non le tableau en entier, soit : count($this-> getchambres()) OU sizeof()
+            . " <br> Nombre de chambres réservées : " . $this->chambresReservees()
+            . "</br> Nombre de chambres disponibles : " . $nbrChambreDispo; // ou bien mettre : (count ($this->getchambres()) - $this->chambresReservees())
     }
 
 
