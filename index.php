@@ -58,3 +58,5 @@ echo"<br>";
 $camille -> infoResaclient(); // Affiche Réservations du client
 
 $Hilton -> infoResaHotel (); // Affiche réservation de l'hotel 
+echo "<br>";
+$Hilton -> infoTableauhotel();
