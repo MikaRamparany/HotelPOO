@@ -72,7 +72,7 @@ public function setChambre ($chambre)
 
 public function __toString()
 {
-    return "du ".$this->dateEntree->format('d-m-Y')." au ".$this->dateSortie->format('d-m-Y');
+    return "  du ".$this->dateEntree->format('d-m-Y')." au ".$this->dateSortie->format('d-m-Y');
 }
 
 }
