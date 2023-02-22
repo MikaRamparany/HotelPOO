@@ -109,7 +109,7 @@ class Hotel
         } else {
             foreach ($this->reservations as $reservation) { 
               
-                echo $reservation->getClient()->getprenom() . " " . $reservation->getClient()->getnom() . " " . $reservation->getChambre()->getnumero() ."<br>";
+                echo $reservation->getClient()->getprenom() . " " . $reservation->getClient()->getnom() . " " . $reservation->getChambre()->getnumero() .$reservation ."<br>" ;
             }
         }
     }
