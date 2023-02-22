@@ -8,7 +8,7 @@ spl_autoload_register(function ($class_name)
     require_once $class_name . '.php';
 });
 // HOTEL HILTON
-$Hilton = new Hotel ( "Hilton **** Strasbourg "," 10 Route de la Gare", "67000", "Strasbourg" );
+$Hilton = new Hotel ( "Hilton ****  "," 10 Route de la Gare", "67000", "Strasbourg" );
 $C1Hilton=new Chambre($Hilton, "Chambre 1", "2 lits", 70,true);
 $C2Hilton=new Chambre($Hilton, "Chambre 2", "2 lits", 70,true);
 $C3Hilton=new Chambre($Hilton, "Chambre 3", "2 lits", 90,false);
@@ -24,7 +24,7 @@ $C10Hilton=new Chambre($Hilton, "Chambre 10", "3 lits", 220,true);
 
 
 //HOTE REGENT
-$Regent = new Hotel ("Regent *****Paris","23A Rue Jean-Frédéric Oberlin", "775000", "Paris");
+$Regent = new Hotel ("Regent *****","23A Rue Jean-Frédéric Oberlin", "775000", "Paris");
 $RegentC1=new Chambre($Regent, "Chambre 1", "2 lits", 150,true);
 $RegentC2=new Chambre($Regent, "Chambre 2", "2 lits", 150,false);
 $RegentC3=new Chambre($Regent, "Chambre 3", "2 lits", 175,true);
