@@ -108,14 +108,14 @@ public function setwifi (bool $wifi)
         $this->reservations[] = $reservation;
     }
     
-    public function disponibilteStatut() 
+    public function statutChambre() 
     {
-        if ($this -> statut == true) 
+        if ($this -> statut== true) 
         {   
-            $this -> statut = false;
+            echo " Disponible ";
         }
         else {
-            $this -> statut = true;
+            echo " Reservée"; 
 
         }
     }
@@ -123,6 +123,6 @@ public function setwifi (bool $wifi)
 
     public function __toString()
     {  
-    return $this -> numero ;
+    return $this -> numero;
     }
 }
