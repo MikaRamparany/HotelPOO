@@ -36,6 +36,10 @@ public function __construct ($client, $chambre, $dateEntree,$dateSortie)
     return $this -> dateEntree = $dateEntree;
 
     }
+    public function getClient()
+    {
+        return $this -> Client;
+    }
     public function getdateSortie ()
     {
         
@@ -49,14 +53,14 @@ public function setdateSortie ($dateSortie)
     return $this -> dateSortie = $dateSortie;
 
     }
-    public function getchambre ()
+    public function getChambre ()
     {
         
     return $this-> chambre;
     
     }
 
-public function setchambre ($chambre)
+public function setChambre ($chambre)
 
     {
     return $this -> chambre = $chambre;

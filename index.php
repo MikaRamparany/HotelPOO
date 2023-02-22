@@ -57,4 +57,4 @@ echo"<br>";
 echo"<br>";
 $camille -> infoResaclient(); // Affiche Réservations du client
 
-$Hilton -> infoResahotel (); // Affiche réservation de l'hotel 
+$Hilton -> infoResaHotel (); // Affiche réservation de l'hotel 

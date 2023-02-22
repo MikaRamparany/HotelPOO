@@ -1,174 +1,164 @@
 <?php
 
-Class Hotel {
+class Hotel
+{
 
     private string $nom;
     private string $adresse;
     private string $cPostale;
     private string $ville;
-    private array $chambres=[];
-    private array $reservations=[];
+    private array $chambres = [];
+    private array $reservations = [];
 
-    public function __construct ($nom, $adresse, $cPostale, $ville)
+    public function __construct($nom, $adresse, $cPostale, $ville)
     {
 
-        $this-> nom=$nom;
-        $this-> adresse=$adresse;
-        $this-> cPostale=$cPostale;
-        $this-> ville= $ville;
-        $this-> chambres = [];
-        $this-> reservations =[];
-      
-
+        $this->nom = $nom;
+        $this->adresse = $adresse;
+        $this->cPostale = $cPostale;
+        $this->ville = $ville;
+        $this->chambres = [];
+        $this->reservations = [];
     }
 
-// GETTERS AND SETTERS
+    // GETTERS AND SETTERS
 
-public function getnom ()
+    public function getnom()
     {
-    return $this-> nom;
+        return $this->nom;
     }
 
-public function setnom ($nom)
+    public function setnom($nom)
 
     {
-    return $this -> nom = $nom;
-
+        return $this->nom = $nom;
     }
 
-public function getadresse ()
+    public function getadresse()
     {
-        return $this -> adresse;
+        return $this->adresse;
     }
 
-public function setadresse ($adresse)
+    public function setadresse($adresse)
     {
-         return $this -> adresse = $adresse;
+        return $this->adresse = $adresse;
     }
-    public function getville ()
+    public function getville()
     {
-        return $this -> ville;
+        return $this->ville;
     }
 
-public function setville ($ville)
+    public function setville($ville)
     {
-         return $this -> ville = $ville;
+        return $this->ville = $ville;
     }
 
-public function getchambres()
-    { 
-    return  $this -> chambres;
-    }
-
-public function setnbChambres ($nbChambres)
+    public function getChambres()
     {
-        return $this -> chambres= $nbChambres; 
+        return  $this->chambres;
     }
 
-    public function getcPostale ()
+    public function setnbChambres($nbChambres)
     {
-        return $this -> cPostale;
+        return $this->chambres = $nbChambres;
     }
 
-public function setcPostale ($cPostale)
+    public function getcPostale()
     {
-         return $this -> cPostale = $cPostale;
+        return $this->cPostale;
     }
 
-public function getreservations()
+    public function setcPostale($cPostale)
     {
-        return $this ->reservations;
+        return $this->cPostale = $cPostale;
     }
-public function setreservations ($reservations)
+
+    public function getreservations()
     {
-        return $this -> reservations = $reservations;
+        return $this->reservations;
     }
-
-
-// FONCTIONS : il faudra afficher les infos de l'hôtel, soit adresse, nb de chambres, nb de réservation (ICI à voir pour lier avec une fonction de la classe reservation), nb de chambres disponibles.
-
-public function addChambres (Chambre $chambre)
+    public function setreservations($reservations)
     {
-$this-> chambres[] = $chambre;
+        return $this->reservations = $reservations;
+    }
+
+
+    // FONCTIONS : il faudra afficher les infos de l'hôtel, soit adresse, nb de chambres, nb de réservation (ICI à voir pour lier avec une fonction de la classe reservation), nb de chambres disponibles.
+
+    public function addChambres(Chambre $chambre)
+    {
+        $this->chambres[] = $chambre;
     }
 
 
 
-    
-public function addReservations ()
-   { $i = 0;
-foreach ($this->reservations as $reservation) 
-{
-    $i++;
-}
-return $i;
-   }
-public function infoResahotel ()
-    { 
-        echo " <br> <br> Réservations de l'hôtel " .$this  -> getnom() . " <br> " .count ($this-> getreservations()) ." RESERVATION(S)" ." <br>";
 
-        if (0==count($this->reservations)) 
-        {
+    public function addReservations(Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+    }
+    public function infoResaHotel()
+    {
+
+        
+        echo " <br> <br> Réservations de l'hôtel " . $this->getnom() . " <br> " . count($this->getreservations()) . " RESERVATION(S)" . " <br>";
+
+        if (0 == count($this->reservations)) {
             echo "Aucune reservation ";
-        } else 
-        {
-        foreach ($this->reservations as $reservation) 
-            {
-                echo $reservation -> getreservations()-> getprenom () . " " . $reservation-> getreservations()-> getprenom () ." " .$reservation ->getChambre()-> getnumero ();
+        } else {
+            foreach ($this->reservations as $reservation) { 
+              
+                echo $reservation->getClient()->getprenom() . " " . $reservation->getClient()->getnom() . " " . $reservation->getChambre()->getnumero() ."<br>";
             }
-      }
-
+        }
     }
 
-    
 
 
 
 
 
-public function chambresDisponibles ()
+
+    public function chambresDisponibles()
     {
-        $chambresDisponibles =0;
+        $chambresDisponibles = 0;
         foreach ($this->chambres as  $chambre) {
-            if ($chambre-> getStatut() == true) {
+            if ($chambre->getStatut() == true) {
                 $chambresDisponibles++; // OU $chambresDisponibles = $chambresDisponibles + 1
             }
         }
-        return "Chambres disponibles : ".$chambresDisponibles;
+        return "Chambres disponibles : " . $chambresDisponibles;
     }
 
     public function chambresReservees()
     {
-        $chambresReservees=0;
-        foreach($this->chambres as $chambre){
-            if($chambre->getStatut()==false){
+        $chambresReservees = 0;
+        foreach ($this->chambres as $chambre) {
+            if ($chambre->getStatut() == false) {
                 $chambresReservees++;
             }
         }
-        return "Chambres réservées : ".$chambresReservees;
+        return "Chambres réservées : " . $chambresReservees;
     }
 
 
 
-public function afficherInfohotel ()
+    public function afficherInfohotel()
 
     {
-        echo "<br>   " . $this ->getnom() . "</br>"
-        ."Adresse : ".$this->getadresse() ." "
-        .$this -> getcPostale()  . " "
-        .$this-> getville ()."<br>"
-        . "Nombre de chambres : ".count($this-> getchambres()) // ici "$this->getchambres() (le tableau) n'est pas accepté (message d'erreur). il faut alors une fonction pour pouvoir seulement afficher la taille du tableau et non le tableau en entier, soit : count($this-> getchambres()) OU sizeof()
-        . " <br> Nombre de chambres réservées : ". count ($this-> getreservations())
-        . "</br> Nombre de chambres disponibles : ";
-
-
+        echo "<br>   " . $this->getnom() . "</br>"
+            . "Adresse : " . $this->getadresse() . " "
+            . $this->getcPostale()  . " "
+            . $this->getville() . "<br>"
+            . "Nombre de chambres : " . count($this->getchambres()) // ici "$this->getchambres() (le tableau) n'est pas accepté (message d'erreur). il faut alors une fonction pour pouvoir seulement afficher la taille du tableau et non le tableau en entier, soit : count($this-> getchambres()) OU sizeof()
+            . " <br> Nombre de chambres réservées : " . count($this->getreservations())
+            . "</br> Nombre de chambres disponibles : ";
     }
-    
 
-public function __toString()
+
+    public function __toString()
     {
-    return $this-> nom . $this -> ville ; 
+        return $this->nom . $this->ville;
     }
-    
 }
-
