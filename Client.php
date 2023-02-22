@@ -76,7 +76,7 @@ Class Client {
 
     public function infoResaclient()
     { 
-        echo "Réservation du client ".$this->getprenom() ." " .$this->getnom() . " <br> " .$this->nbResaclient() ." RESERVATION(S)" . "<br>";
+        echo "Réservations du client ".$this->getprenom() ." " .$this->getnom() . " <br> " .$this->nbResaclient() ." RESERVATION(S)" . "<br>";
         if (0==count($this->reservations)) 
         {
             echo "Aucune reservation ";
@@ -87,17 +87,17 @@ Class Client {
             $hasWifi = ($reservation->getChambre()->getWifi() ) ? "oui" : "non"; // Ecriture ternaire, soit raccourcis pour if et else lorsque les instructions sont courtes.
 
         echo $reservation->getChambre()->getHotel() ." / " .$reservation->getChambre(). " / (".$reservation->getChambre()->getnbLits()." - " .$reservation->getChambre()->getPrix()."€ - Wifi : ".$hasWifi. ")  ".$reservation ."<br>";
-     } 
-    }
+        } 
+        }
     if (0<count($this->reservations))
-    {
+        {
         echo " Total : ". $this->prixTotal()." €. ";
-    } 
+        } 
      
-}
+    }
 
 public function __toString()
-{
+    {
     return $this-> nom . $this-> prenom;
-}
+    }
 }  
