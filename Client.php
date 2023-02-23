@@ -86,7 +86,7 @@ Class Client {
             echo "Aucune reservation ";
         } else 
         {
-            echo "<span style='text-align:justify; margin: 0'><p style='color:#FFF; font-size:15px; background-color:#00A310; width: 130px; margin: 5px 0 5px 0; padding:5px'> $nbResaclient RESERVATION(S)</p></span>" . " <br>";
+            echo "<span style='text-align:justify; margin: 0'><p style='color:#FFF; font-size:15px; background-color:#36bf94; width: 130px; margin: 5px 0 5px 0; padding:5px'> $nbResaclient RESERVATION(S)</p></span>" . " <br>";
         }
         foreach ($this->reservations as $reservation) 
         {
