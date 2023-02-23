@@ -52,31 +52,28 @@ Class Client {
 
     public function prixTotal()
     {
-    $prixTotal=0;
-    foreach($this->reservations as $reservation) 
-        $prixTotal+=$reservation->getChambre()->getPrix();
-        
+        $prixTotal = 0;
+
+        foreach($this->reservations as $reservation) {
+            $nbJourReserve = $reservation->getdateSortie()->diff($reservation->getdateEntree())->days;
+            $prixTotal += $nbJourReserve * $reservation->getChambre()->getPrix();
+        }
     return $prixTotal;
     }
 
 
 
 
-    public function nbResaClient () // compte le nombre de reservations d'un client 
-    {
+    // public function nbResaClient () // compte le nombre de reservations d'un client 
+    // {
         
-            $i = 0;
-            foreach ($this->reservations as $reservation) 
-            {
-                $i++;
-            }
-            return $i;
+    //     count($this->reservations);
         
-    }
+    // }
 
     public function infoResaclient()
     { 
-        $nbResaclient = $this->nbResaclient() ; // création de cette variable pour pouvoir l'insérer dans le echo ligne 89. 
+        $nbResaclient = count($this->reservations); // création de cette variable pour pouvoir l'insérer dans le echo ligne 89. 
         
         echo " <br><br><span style='font-size:22px; color:black'> Réservations du client  $this->prenom $this->nom </span><br>"  . " <br> " ;
 
