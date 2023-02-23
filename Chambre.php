@@ -11,7 +11,7 @@ Class Chambre
          private bool $wifi; // true : wifi / false : no wifi
          private array $reservations = [];
     
-        public function __construct ($hotel, $numero,  $nbLits,  $prix)
+        public function __construct ($hotel, $numero,  $nbLits,  $prix, $statut,$wifi)
     {
 
         $this-> numero= $numero;
@@ -21,8 +21,8 @@ Class Chambre
         $this-> prix= $prix;
 
         $this -> hotel = $hotel; 
-        $this -> wifi = true;  // wifi 
-        $this -> statut = true; // disponible 
+        $this -> wifi = $wifi;  // wifi 
+        $this -> statut = $statut; // disponible 
         $this ->  reservations = [];
         $this -> hotel -> addChambres ($this);
 
@@ -82,7 +82,7 @@ public function sethotel ($hotel)
     return $this-> statut;
     }
 
-public function setstatut (bool $statut)
+public function setstatut (bool $statut=true)
 
     {
     return $this -> statut = $statut;
@@ -93,7 +93,7 @@ public function setstatut (bool $statut)
     return $this-> wifi;
     }
 
-public function setwifi (bool $wifi)
+    public function setwifi (bool $wifi)
 
     {
     return $this -> wifi = $wifi;
