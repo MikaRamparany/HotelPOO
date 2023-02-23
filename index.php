@@ -45,8 +45,8 @@ $green = new Client ("GREEN", "Shiloh");
 
 $ResaHilton1 = new Reservation($camille,$C8Hilton,"30-04-2023", "02-05-2023");
 $ResaHilton2 = new Reservation($green,$C9Hilton,"30-05-2023", "03-06-2023");
-// $ResaRegent1 = new Reservation($Jeanne,$RegentC7,"10-06-2023", "13-06-2023");
-// $ResaRegent1 = new Reservation($camille,$RegentC7,"30-06-2023", "03-07-2023");
+$ResaRegent1 = new Reservation($Jeanne,$RegentC7,"10-06-2023", "13-06-2023");
+$ResaRegent1 = new Reservation($camille,$RegentC7,"30-06-2023", "03-07-2023");
 
 // Tests affichages 
 
