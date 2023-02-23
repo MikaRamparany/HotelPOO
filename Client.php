@@ -89,7 +89,7 @@ Class Client {
         {
             $hasWifi = ($reservation->getChambre()->getWifi() ) ? "oui" : "non"; // Ecriture ternaire, soit raccourcis pour if et else lorsque les instructions sont courtes.
 
-        echo $reservation->getChambre()->getHotel() ." / " .$reservation->getChambre(). " / (".$reservation->getChambre()->getnbLits()." - " .$reservation->getChambre()->getPrix()."€ - Wifi : ".$hasWifi. ")  ".$reservation ."<br>";
+        echo $reservation->getChambre()->getHotel() ." / " .$reservation->getChambre(). " / (".$reservation->getChambre()->getnbLits()." lits - " .$reservation->getChambre()->getPrix()."€ - Wifi : ".$hasWifi. ")  ".$reservation ."<br>";
         } 
         
     if (0<count($this->reservations))
