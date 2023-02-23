@@ -100,19 +100,28 @@ class Hotel
     }
     public function infoResaHotel()
     {
+        $nbChambresresa = count($this->getreservations());
+        
+        echo " <br><br><span style='font-size:22px; color:black'> Réservations de l'hôtel  $this->nom</span><br>"  . " <br> " ;
 
         
-        echo " <br> <br> Réservations de l'hôtel " . $this->getnom() . " <br> " . count($this->getreservations()) . " RESERVATION(S)" . " <br>";
+      
 
         if (0 == count($this->reservations)) {
             echo "Aucune reservation ";
-        } else {
+        } else
+            {
+            echo "<span style='text-align:justify; margin: 0'><p style='color:#FFF; font-size:15px; background-color:#00A310; width: 130px; margin: 5px 0 5px 0; padding:5px'> $nbChambresresa RESERVATION(S)</p></span>" . " <br>";
+            }
+
             foreach ($this->reservations as $reservation) { 
               
-                echo $reservation->getClient()->getprenom() . " " . $reservation->getClient()->getnom() . " " . $reservation->getChambre()->getnumero() .$reservation ."<br>" ;
+
+
+                 echo $reservation->getClient()->getprenom() . " " . $reservation->getClient()->getnom() . " " . $reservation->getChambre()->getnumero() .$reservation ."<br>" ;
             }
         }
-    }
+    
 
 
 
