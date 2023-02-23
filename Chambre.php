@@ -4,7 +4,7 @@ Class Chambre
     {
 
          private string $numero;
-         private string $nbLits;
+         private int $nbLits;
          private float $prix;
          private bool $statut; // true : disponible / false : reservé
          private Hotel $hotel;
