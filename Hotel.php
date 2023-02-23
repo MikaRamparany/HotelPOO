@@ -100,7 +100,7 @@ class Hotel
     }
     public function infoResaHotel()
     {
-        $nbChambresresa = count($this->getreservations());
+        $nbChambresresa = count($this->getreservations()); // création de cette variable pour pouvoir l'insérer dans le echo ligne 114.
         
         echo " <br><br><span style='font-size:22px; color:black'> Réservations de l'hôtel  $this->nom</span><br>"  . " <br> " ;
 
@@ -122,11 +122,6 @@ class Hotel
             }
         }
     
-
-
-
-
-
 
 
     public function chambresDisponibles()
