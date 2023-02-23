@@ -154,7 +154,7 @@ class Hotel
 
         $nbrChambreDispo = count ($this->getchambres()) - $this->chambresReservees();
 
-        echo "<br>   " . $this->getnom() . "</br>"
+        echo "<br>   <span style='font-size:22px; color:black'> $this->nom  </span></br>"
             . "Adresse : " . $this->getadresse() . " "
             . $this->getcPostale()  . " "
             . $this->getville() . "<br>"
