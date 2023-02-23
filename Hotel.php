@@ -1,3 +1,14 @@
+<head>
+    <meta charset="UTF-8">
+    <title> POO HOTEL </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <style type="text/css">
+        table tbody tr:nth-child(even) {
+            background-color: #EFEFEF;
+        }
+    </style>
+</head>
+
 <?php
 
 class Hotel
@@ -165,26 +176,54 @@ class Hotel
 
     public function infoTableauhotel()
     {    
-        echo "<span style='font-size:22px ; color:black'>Statut des chambres de <b> $this->nom </b> :</span><br><br>";
-        echo "<style type=text/css>",
-        '<thead>',
-            '<tr>',
-                '<th> CHAMBRE </th>', '<th> PRIX </th>', '<th> WIFI</th>', '<th> ETAT</th>',
-            '</tr>';
-        '<tbody>';
-        foreach ($this->chambres as  $chambre)
-            {
-                
-            "<td style=color:'grey'>.$chambre->getnom();</td>";
+        echo "<span style='font-size:22px ; color:black'>Statut des chambres de <b> $this->nom </b> </span><br><br>";
+        //Création du tableau ci-dessous:
 
-            }
-       
+        echo "<style type=text/css> table tbody tr:nth-child(even) { background-color: #EFEFEF; } </style> 
+
+        <table style='border-collapse:collapse; text-align:center; width:800px'>
+        <thead >
         
-    
+            <tr>
+                <th> CHAMBRE </th>
+                <th> PRIX </th>
+                <th> WIFI</th>
+                <th> ETAT</th>
+            </tr>
+            </thead>
+            <tbody>";
+
+
+        foreach ($this->chambres as  $chambres)
+            { 
+
+                $logoWifi = '<i class="fas fa-wifi"></i>';
+                //ouverture <tr>
+                echo "<tr> 
+                <td style='color:#808080'>".$chambres->getnumero()."</td>
+                <td style='color:#808080'>".$chambres->getprix()."€ </td>
+                <td style='color:#808080'>".($chambres->getwifi() ? $logoWifi : '').
+                
+             
+                "</td>";
+
+                if ($chambres->getstatut()==true)  
+                {
+                    echo "<td style='display:flex; justify-content:center'><p style='color:#FFF; font-size:15px; background-color:#36bf94; width: 90px; margin:5px; padding:5px'>".mb_strtoupper("Disponible")."</p></td>";
+                }
+                else 
+                {
+                    echo "<td style='display:flex; justify-content:center'><p style='color:#FFF; font-size:15px; background-color:#d43c6c; width: 90px; margin:5px; padding:5px'>".mb_strtoupper("Réservée")."</p></td>";
+                }
+                // fermeture </tr>
+                echo "</tr>"; 
+            }
+            // fermeture </tbody> et </table>
+            echo "</tbody></table>";
 
     }
     public function __toString()
     {
-        return $this->nom . $this->ville;
+        return $this->nom . $this->ville  ;
     }
 }
