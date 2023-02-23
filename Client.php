@@ -76,19 +76,25 @@ Class Client {
 
     public function infoResaclient()
     { 
-        echo "Réservations du client ".$this->getprenom() ." " .$this->getnom() . " <br> " .$this->nbResaclient() ." RESERVATION(S)" . "<br>";
+        $nbResaclient = $this->nbResaclient() ; // création de cette variable pour pouvoir l'insérer dans le echo ligne 89. 
+        
+        echo " <br><br><span style='font-size:22px; color:black'> Réservations du client  $this->prenom $this->nom </span><br>"  . " <br> " ;
+
+
         if (0==count($this->reservations)) 
         {
             echo "Aucune reservation ";
         } else 
         {
+            echo "<span style='text-align:justify; margin: 0'><p style='color:#FFF; font-size:15px; background-color:#00A310; width: 130px; margin: 5px 0 5px 0; padding:5px'> $nbResaclient RESERVATION(S)</p></span>" . " <br>";
+        }
         foreach ($this->reservations as $reservation) 
         {
             $hasWifi = ($reservation->getChambre()->getWifi() ) ? "oui" : "non"; // Ecriture ternaire, soit raccourcis pour if et else lorsque les instructions sont courtes.
 
         echo $reservation->getChambre()->getHotel() ." / " .$reservation->getChambre(). " / (".$reservation->getChambre()->getnbLits()." - " .$reservation->getChambre()->getPrix()."€ - Wifi : ".$hasWifi. ")  ".$reservation ."<br>";
         } 
-        }
+        
     if (0<count($this->reservations))
         {
         echo " Total : ". $this->prixTotal()." €. ";
